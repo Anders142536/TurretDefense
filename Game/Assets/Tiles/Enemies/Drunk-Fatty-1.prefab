@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4465625722587521202}
   - component: {fileID: 4465625722587521203}
   - component: {fileID: 4465625722587521212}
+  - component: {fileID: -4291499484727383936}
   m_Layer: 8
   m_Name: Drunk-Fatty-1
   m_TagString: Untagged
@@ -129,3 +130,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.303257, y: 1.4851496}
   m_EdgeRadius: 0
+--- !u!114 &-4291499484727383936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4465625722587521214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d60827ce04dfc347b63160ea3fdd96e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 1
+  damage: 10
+  health: 10

@@ -4,31 +4,58 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Enemy;
+    public static GameManager instance = null;
+    public Enemy Enemy;
+    public int enemyCount;
+    public float enemySpawnDelay;
+
     private Transform EnemiesParent;
-    private List<GameObject> enemies;
+    private List<Enemy> enemies;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("starting game manager");
-        enemies = new List<GameObject>();
-        EnemiesParent = new GameObject("Board").transform;
-        GameObject newEnemyInstance = Instantiate(Enemy, new Vector3(-15f, 0f, 0f), Quaternion.identity) as GameObject;
+        if (instance == null)
+        {
+            instance = this;
+        } else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
 
-        enemies.Add(newEnemyInstance);
-        newEnemyInstance.transform.SetParent(EnemiesParent);
+        Debug.Log("starting game manager");
+        enemies = new List<Enemy>();
+        EnemiesParent = new GameObject("Board").transform;
+
+        StartCoroutine(SpawnEnemies(Enemy, enemyCount, enemySpawnDelay));
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (GameObject enemy in enemies)
+        foreach (Enemy enemy in enemies)
         {
             Vector2 position = enemy.transform.position;
             Vector2 newPosition = new Vector2(position.x + 1 * Time.deltaTime, position.y);
             enemy.transform.position = newPosition;
+        }
+    }
+
+    public void addEnemy(Enemy toAdd)
+    {
+        toAdd.transform.SetParent(EnemiesParent);
+        enemies.Add(toAdd);
+    }
+
+    private IEnumerator SpawnEnemies(Enemy enemy, int enemyCount, float enemySpawnDelay)
+    {
+        while (enemies.Count < enemyCount)
+        {
+            Debug.Log("spawning enemy");
+            Instantiate(enemy, new Vector3(-17, -1, 0), Quaternion.identity);
+            yield return new WaitForSeconds(enemySpawnDelay);
         }
     }
 }
