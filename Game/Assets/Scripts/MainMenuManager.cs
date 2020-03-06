@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
+    public GameObject MainMenuPanel;
+    public GameObject OptionsPanel;
+    public GameObject MapPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,15 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void goToMap()
+    {
+
+    }
+
+    public void goToMainMenu()
+    {
+
     }
 }
