@@ -1,32 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject MainMenuPanel;
-    public GameObject OptionsPanel;
-    public GameObject MapPanel;
 
-    // Start is called before the first frame update
-    void Start()
+    public void quit()
     {
-        
+        Debug.Log("quitting");
+        Application.Quit();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void loadLevel(int levelID)
     {
-        
-    }
-
-    public void goToMap()
-    {
-
-    }
-
-    public void goToMainMenu()
-    {
-
+        Debug.Log("loading level " + levelID);
+        SceneManager.LoadScene(levelID, LoadSceneMode.Single);
     }
 }
