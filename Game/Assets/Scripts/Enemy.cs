@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MovingObject
 {
+    public string name;
     public int damage;
     public int health;
 
