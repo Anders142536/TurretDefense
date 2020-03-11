@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    public static GameManager instance = null;
+    public static LevelManager instance = null;
     public Enemy Enemy;
     public int enemyCount;
     public float enemySpawnDelay;
+    public int sizeFirstWave;   //currently unused
+    public int waveSizeGrowth;  //currently unused
 
     private Transform EnemiesParent;
     private List<Enemy> enemies;
@@ -16,15 +19,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        } else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-
         Debug.Log("starting game manager");
+
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
+
         enemies = new List<Enemy>();
         EnemiesParent = new GameObject("Board").transform;
 
@@ -41,6 +40,17 @@ public class GameManager : MonoBehaviour
             Vector2 newPosition = new Vector2(position.x + 1 * Time.deltaTime, position.y);
             enemy.transform.position = newPosition;
         }
+    }
+
+    public void Pause()
+    {
+
+    }
+
+    public void backToMainMenu()
+    {
+        Debug.Log("back to main menu");
+        SceneManager.LoadScene(0);
     }
 
     public void addEnemy(Enemy toAdd)
