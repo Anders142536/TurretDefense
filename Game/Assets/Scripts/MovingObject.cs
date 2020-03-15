@@ -7,9 +7,8 @@ public class MovingObject : MonoBehaviour
     public float MoveSpeed = 1f;
     private BoxCollider2D boxCollider;
     private Rigidbody2D rigidbody2d;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public MovingObject()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         rigidbody2d = GetComponent<Rigidbody2D>();

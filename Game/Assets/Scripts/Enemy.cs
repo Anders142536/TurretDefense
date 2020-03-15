@@ -13,6 +13,7 @@ public class Enemy : MovingObject
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("bb");
         GameManager.instance.addEnemy(this);
     }
 
